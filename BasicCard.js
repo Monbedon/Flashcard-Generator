@@ -9,15 +9,18 @@
  		console.log("Front: "+this.front+"\nBack: "+this.back);
  	}
  }
+ 
+ var firstPresident = new BasicCard("Who was the first president of the United States?", "George Washington");
 
 	inquirer.prompt([{
-		name: "front",
+		name: "answer",
 		message: "Who was the first president of the United States?"
-	},{
-		name:"back",
-		message:"George Washington"
-	}]).then(function(answers){
-		var firstPresident = new BasicCard(answers.front, answers.back);
+	}]).then(function(res){
+		
+		if (firstPresident.back.toLowerCase() === res.answer.toLowerCase()){
+			console.log("CORRECT!");
+		}
 		firstPresident.printInfo();
+
 	})
 
