@@ -1,26 +1,37 @@
 var inquirer = require('inquirer');
 
  function ClozeCard(text, cloze){
- 	this.text = text;
  	this.cloze = cloze;
- 	this.partial = "[cloze] was the first President";
- }
+ 	this.text = "[cloze] was the first President.";
+ 	this.printInfo =function(){
+ 		console.log(this.text)
+ 	}
+}
 
 var cloze = "George Washington";
 
+var brokenCloze = new ClozeCard("This doesn't work");
 
-inquirer.prompt({
-	name:"cloze",
-	message:"Enter first presidents first and last name:"
-}).then(function(answer){
-	cloze.push(answer.partial);
-	var ClozeCard = new ClozeCard(text,cloze);
-	console.log(ClozeCard);
+var firstPresidentCloze = new ClozeCard(
+    "George Washington was the first president of the United States.");
 
+inquirer.prompt([{
+	name:"answer",
+	message:"... was the first president."
+}]).then(function(res){
 
-})
+	if (firstPresidentCloze.cloze === res.answer){
+
+		cloze.push(answer.text);
+		console.log("You did it!");
+	}
+	else { console.log(brokenCloze);
+	}
+	firstPresidentCloze.printInfo();
+});
  
-
- var constructPartial= function(completeObject){
- 	c
- }
+ 
+ // var constructFull= function(completeObject){
+ // 		completeObject.full = completeObject.full.replace ("[cloze]",
+ // 			completeObject.cloze[i]);
+ // }
